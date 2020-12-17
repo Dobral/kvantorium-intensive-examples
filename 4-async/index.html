@@ -1,0 +1,37 @@
+<html>
+<head>
+  <title>Кванториум</title>
+  <meta charset="utf-8"/>
+
+</head>
+<body>
+  <h1>Кванториум - Frontend</h1>
+  <article class="content">
+
+  </article>
+  <button class="button">Скажи мне правду</button>
+  <input/>
+  <script>
+    function makeTimeout(timeout) {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+
+          console.log('setTimeout');
+
+          resolve('done');
+        }, timeout);
+      });
+    }
+
+    document.querySelector('.button').addEventListener('click', function() {
+      let status = 'start';
+
+      makeTimeout(1000).then(function(result) {
+        status = result;
+        console.log('end click');
+        console.log(status);
+      });
+    });
+  </script>
+</body>
+</html>

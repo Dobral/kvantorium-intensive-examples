@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title>Кванториум</title>
+  <meta charset="utf-8"/>
+
+</head>
+<body>
+  <h1>Кванториум - Frontend</h1>
+  <article class="content">
+
+  </article>
+  <button class="cat-button">Скажи мне правду о котах</button>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      const content = document.querySelector('.content');
+      let response = await fetch('https://cat-fact.herokuapp.com/facts');
+
+      let json = await response.json();
+
+      document.querySelector('.cat-button').addEventListener('click', async function() {
+        content.textContent = json.pop().text;
+
+        if (json.length < 2) {
+          response = await fetch('https://cat-fact.herokuapp.com/facts');
+
+          json = json.concat(await response.json());
+        }
+
+        console.log(json);
+      });
+    });
+  </script>
+</body>
+</html>

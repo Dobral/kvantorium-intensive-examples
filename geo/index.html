@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>Кванториум</title>
+  <meta charset="utf-8"/>
+
+</head>
+<body>
+  <h1>Кванториум - Frontend</h1>
+  <article class="content">
+    lat: <div class="lat"></div>
+    lon: <div class="lon"></div>
+    <button class="geo-button">Покажи мне где ты</button>
+  </article>
+  <script>
+    const lat = document.querySelector('.lat');
+    const lon = document.querySelector('.lon');
+    document.querySelector('.geo-button').addEventListener('click', function() {
+      navigator.geolocation.getCurrentPosition(function(data) {
+        const coords = data.coords;
+        lat.innerText = coords.latitude;
+        lon.innerText = coords.longitude;
+      });
+    });
+  </script>
+</body>
+</html>
